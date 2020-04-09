@@ -1,0 +1,49 @@
+package server;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.util.ArrayList;
+
+public class SChat extends Thread {
+	private Socket withClient = null;
+	private InputStream reC = null;
+	private OutputStream senC = null;
+	private SCenter sc = null;
+	private ArrayList<Thread> tList = new ArrayList<>();
+	
+	
+	SChat(Socket c, SCenter s){
+		this.withClient = c;
+		this.sc = s;
+	}
+
+
+	@Override
+	public void run() {
+		try {
+			streamSet();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void streamSet() throws IOException, Exception {
+		reC = withClient.getInputStream();
+		final ObjectInputStream ois = new ObjectInputStream(reC);
+		byte[] data = (byte[])ois.readObject();
+        System.out.println("data size : " + data.length);
+        System.out.println("성공하였습니다.");
+        
+        ois.close();
+        reC.close();
+        withClient.close();
+        
+	}
+	
+	
+}
