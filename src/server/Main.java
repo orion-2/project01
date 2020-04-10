@@ -23,7 +23,7 @@ public class Main {
 			cList.add(withClient);
 			System.out.println(cList);
 			System.out.println(withClient.getInetAddress() + "클라이언트 접속함");
-			SChat s =new SChat(withClient,sc);
+			SChat s =new ServerChat(withClient,sc);
 			sc.addSChat(s);
 			s.start();
 		}	

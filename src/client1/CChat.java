@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -16,13 +17,13 @@ public class CChat {
 	JFrameC1 join = null;
 	ArrayList <JTextField> in = new ArrayList<>();
 	
-	
 	CChat(Socket c){
 		this.withServer = c;
 		startJoin();
+		
 	}
 	private void startJoin() {
-		join = new JFrameC1(this);
+		join = new JFrameC1(this, this);
 	}
 	public void send() {
 		new Thread(new Runnable() {
@@ -56,12 +57,5 @@ public class CChat {
 		oos.close();
 		senC.close();
 		withServer.close();
-
-		
-		
-		
-		
-		
-		
 	}
 }

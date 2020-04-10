@@ -1,6 +1,8 @@
 package client1;
 
-public class CDTO {
+import java.io.Serializable;
+
+public class CDTO implements Serializable {
 	private String Id;
 	private String Pw;
 	private String Name;
