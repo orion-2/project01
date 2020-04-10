@@ -16,6 +16,7 @@ public class CChat {
 	JFrameC1 join = null;
 	ArrayList <JTextField> in = new ArrayList<>();
 	
+	
 	CChat(Socket c){
 		this.withServer = c;
 		startJoin();

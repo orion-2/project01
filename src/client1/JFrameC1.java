@@ -19,8 +19,9 @@ public class JFrameC1 extends JFrame {
 	private JPanel contentPane;
 	private JButton addBtn = new JButton("가입하기");
 	JTextField[] indata = new JTextField[7];
-	CChat myLog = null;
-
+	CChat myLog;
+	
+	
 	public JFrameC1(CChat c) {
 		init();
 	}
@@ -135,7 +136,7 @@ public class JFrameC1 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object cobj = e.getSource();
-				if(cobj.equals(addBtn)||cobj.equals(indata) ) {
+				if(cobj.equals(addBtn)) {
 					try {
 						myLog.streamSet(indata);
 						System.out.println("담았습니다.");
