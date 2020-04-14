@@ -28,6 +28,7 @@ public class SChat extends Thread {
 	@Override
 	public void run() {
 		try {
+//			receive();
 			streamSet();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -35,18 +36,25 @@ public class SChat extends Thread {
 		}
 	}
 	
+//	private void receive() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
 	private void streamSet() throws IOException, Exception  {
 		reC = withClient.getInputStream();
 		final ObjectInputStream ois = new ObjectInputStream(reC);
-		byte[] indata = (byte[])ois.readObject();
+		JTextField[] indata = (JTextField[])ois.readObject();
         System.out.println("data size : " + indata.length);
         System.out.println("성공하였습니다.");
         
-        ois.close();
-        reC.close();
-        withClient.close();
+//        ois.close();
+//        reC.close();
+//        withClient.close();
         
 	}
+	
+	
 	
 	
 }

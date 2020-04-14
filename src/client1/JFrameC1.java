@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.Serializable;
 import java.net.Socket;
 
 import javax.swing.JButton;
@@ -21,10 +20,9 @@ public class JFrameC1 extends JFrame {
 	private JButton addBtn = new JButton("가입하기");
 	JTextField[] indata = new JTextField[7];
 	CChat myLog = null;
-	
-	
-	JFrameC1(CChat c, CChat s) {
-		this.myLog = s;
+				
+	JFrameC1(CChat c) {
+		myLog = c;
 		init();
 	}
 
@@ -134,14 +132,18 @@ public class JFrameC1 extends JFrame {
 		panel_2.add(addBtn);
 		setVisible(true);
 		
+		
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object cobj = e.getSource();
 				if(cobj.equals(addBtn)) {
 					try {
-						myLog.streamSet(indata);
 						System.out.println("담았습니다.");
+//						for(int i = 0; i < indata.length; i++) {
+							myLog.streamSet(indata);
+//						}
+						
 						
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block

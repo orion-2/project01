@@ -14,8 +14,9 @@ public class CChat {
 	private Socket withServer = null;
 	private InputStream reC = null;
 	private OutputStream senC = null;
-	JFrameC1 join = null;
-	ArrayList <JTextField> in = new ArrayList<>();
+	private JFrameC1 join = null;
+	
+	ArrayList <JTextField[]> in = new ArrayList<>();
 	
 	CChat(Socket c){
 		this.withServer = c;
@@ -23,7 +24,7 @@ public class CChat {
 		
 	}
 	private void startJoin() {
-		join = new JFrameC1(this, this);
+		join = new JFrameC1(this);
 	}
 	public void send() {
 		new Thread(new Runnable() {
@@ -46,6 +47,7 @@ public class CChat {
 			}
 		}).start();
 	}
+	
 	public void receive() {
 		
 	}
@@ -54,8 +56,10 @@ public class CChat {
 		senC = withServer.getOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(senC);
 		oos.writeObject(indata);
-		oos.close();
-		senC.close();
-		withServer.close();
+		System.out.println("여기까지");
+		
+//		oos.close();
+//		senC.close();
+//		withServer.close();
 	}
 }
