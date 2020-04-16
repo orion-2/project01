@@ -3,13 +3,10 @@ package server;
 import java.util.ArrayList;
 
 public class SCenter {
-	private ArrayList<SChat> sList = new ArrayList<>();
+	private ArrayList<Server> sList = new ArrayList<>();
 	
-	public void addSChat(SChat s) {
+	public void addSChat(Server s) {
 		this.sList.add(s);
-		
-	}
-	public void reC() {
 		
 	}
 	

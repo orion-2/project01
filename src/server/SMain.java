@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class Main {
+public class SMain {
 
 	public static void main(String[] args) throws IOException {
 		ServerSocket serverS = null;
@@ -23,7 +23,7 @@ public class Main {
 			cList.add(withClient);
 			System.out.println(cList);
 			System.out.println(withClient.getInetAddress() + "클라이언트 접속함");
-			SChat s =new SChat(withClient,sc);
+			Server s = new Server(withClient,sc);
 			sc.addSChat(s);
 			s.start();
 		}	

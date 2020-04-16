@@ -1,5 +1,6 @@
 package client1;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
@@ -14,6 +15,7 @@ public class CChat {
 	private Socket withServer = null;
 	private InputStream reC = null;
 	private OutputStream senC = null;
+	private JFrameMain Main = null;
 	private JFrameC1 join = null;
 	
 	ArrayList <JTextField[]> in = new ArrayList<>();
@@ -24,6 +26,7 @@ public class CChat {
 		
 	}
 	private void startJoin() {
+		
 		join = new JFrameC1(this);
 	}
 	public void send() {
@@ -35,7 +38,7 @@ public class CChat {
 				System.out.println("리시브스타트");
 				try {
 					reC = withServer.getInputStream();
-					byte[] reBuffer = new byte[100];
+					byte[] reBuffer = new byte[1024];
 					reC.read(reBuffer);
 					String in = new String (reBuffer);
 					in = in.trim();
@@ -48,14 +51,14 @@ public class CChat {
 		}).start();
 	}
 	
-	public void receive() {
-		
-	}
 	
-	public void streamSet(JTextField[] indata) throws IOException {
+	public void streamSet(ArrayList<String> data) throws IOException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(baos);
+		oos.writeObject(data);
+		byte[] bowl = baos.toByteArray();
 		senC = withServer.getOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(senC);
-		oos.writeObject(indata);
+		senC.write(bowl);
 		System.out.println("여기까지");
 		
 //		oos.close();

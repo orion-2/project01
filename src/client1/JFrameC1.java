@@ -20,7 +20,8 @@ public class JFrameC1 extends JFrame {
 	private JButton addBtn = new JButton("가입하기");
 	JTextField[] indata = new JTextField[7];
 	CChat myLog = null;
-				
+	CDTO ex = new CDTO();
+	
 	JFrameC1(CChat c) {
 		myLog = c;
 		init();
@@ -127,7 +128,7 @@ public class JFrameC1 extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 
-		addBtn.setBounds(64, 10, 112, 35);
+		addBtn.setBounds(31, 10, 92, 28);
 	
 		panel_2.add(addBtn);
 		setVisible(true);
@@ -139,12 +140,12 @@ public class JFrameC1 extends JFrame {
 				Object cobj = e.getSource();
 				if(cobj.equals(addBtn)) {
 					try {
-						System.out.println("담았습니다.");
-//						for(int i = 0; i < indata.length; i++) {
-							myLog.streamSet(indata);
-//						}
-						
-						
+						for (int i = 0; i < indata.length; i++) {
+							ex.data.add(indata[i].getText());
+							System.out.println(ex.data.get(i));
+						}
+						myLog.streamSet(ex.data);
+						dispose();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -152,6 +153,15 @@ public class JFrameC1 extends JFrame {
 				}
 			}
 		});
+		
+		JButton cancelBtn = new JButton("취소");
+		cancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		cancelBtn.setBounds(146, 10, 92, 28);
+		panel_2.add(cancelBtn);
 	}
 	
 }

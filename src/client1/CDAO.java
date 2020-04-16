@@ -15,7 +15,7 @@ public class CDAO {
 	private static CDAO CDAOobj;
 	private CDTO member = new CDTO();
 	
-	private CDAO() {
+	public CDAO() {
 	}	
 	static {
 		try {
@@ -77,23 +77,24 @@ public class CDAO {
 		
 	}
 	//선주회원등록
-	public boolean insertOne(CDTO m) {
+	public boolean insertOne(CDTO ex2) {
 		boolean cFlag = false;
 		if(this.connect()) {
 			String sql = "INSERT INTO MEMBERC VALUES (?,?,?,?,?,?,?)";
 			try {
 				PreparedStatement psmt = conn.prepareStatement(sql);
-				psmt.setString(1, m.getId());
-				psmt.setString(2, m.getPw());
-				psmt.setString(3, m.getName());
-				psmt.setString(4, m.getPNum());
-				psmt.setString(5, m.getShipNum());
-				psmt.setString(6, m.getShipName());
-				psmt.setString(7, m.getShipAddr());
+				psmt.setString(1, ex2.getId());
+				psmt.setString(2, ex2.getPw());
+				psmt.setString(3, ex2.getName());
+				psmt.setString(4, ex2.getPNum());
+				psmt.setString(5, ex2.getShipNum());
+				psmt.setString(6, ex2.getShipName());
+				psmt.setString(7, ex2.getShipAddr());
 				int r = psmt.executeUpdate();
 				
 				if(r > 0) {
 					cFlag = true;
+					System.out.println("성공하였습니다.");
 				}
 				psmt.close();
 			} catch (SQLException e) {

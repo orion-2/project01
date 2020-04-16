@@ -1,6 +1,7 @@
 package client1;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class CDTO implements Serializable {
 	private String Id;
@@ -11,6 +12,8 @@ public class CDTO implements Serializable {
 	private String ShipName;
 	private String ShipAddr;
 	
+	public ArrayList<String> data = new ArrayList<>();
+		
 	
 	public String getId() {
 		return Id;
