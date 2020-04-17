@@ -13,9 +13,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import client2.GChat;
+import client2.JFrameG1;
+
 @SuppressWarnings("serial")
 public class JFrameSelec extends JFrame {
+	
 	private JPanel contentPane;
+	private GChat myLog = null;
+	JFrameG1 a = new JFrameG1();
+		
 	public JFrameSelec() {
 
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +66,7 @@ public class JFrameSelec extends JFrame {
 		JButton btnNewButton = new JButton("일반 회원");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new JFrameC2();
+				new JFrameG1();
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 255, 255));
