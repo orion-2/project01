@@ -15,18 +15,20 @@ public class CChat {
 	private Socket withServer = null;
 	private InputStream reC = null;
 	private OutputStream senC = null;
-	private JFrameMain Main = null;
+	private JFrameHome home = null;
 	private JFrameC1 join = null;
-	
 	ArrayList <JTextField[]> in = new ArrayList<>();
 	
 	CChat(Socket c){
 		this.withServer = c;
+		home();
 		startJoin();
 		
 	}
+	private void home() {
+		home = new JFrameHome(this);	
+	}
 	private void startJoin() {
-		
 		join = new JFrameC1(this);
 	}
 	public void send() {

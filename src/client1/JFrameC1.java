@@ -14,13 +14,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class JFrameC1 extends JFrame {
 	
 	private JPanel contentPane;
 	private JButton addBtn = new JButton("가입하기");
 	JTextField[] indata = new JTextField[7];
 	CChat myLog = null;
-	CDTO ex = new CDTO();
+	CDTO1 ex = new CDTO1();
 	
 	JFrameC1(CChat c) {
 		myLog = c;
@@ -30,7 +31,7 @@ public class JFrameC1 extends JFrame {
 	public void init() {
 
 		setTitle("낚시가자 1.0v");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 450, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -163,6 +164,7 @@ public class JFrameC1 extends JFrame {
 		cancelBtn.setBounds(146, 10, 92, 28);
 		panel_2.add(cancelBtn);
 	}
+	
 	
 }
 

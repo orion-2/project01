@@ -3,7 +3,8 @@ package client1;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CDTO implements Serializable {
+@SuppressWarnings("serial")
+public class CDTO1 implements Serializable {
 	private String Id;
 	private String Pw;
 	private String Name;
