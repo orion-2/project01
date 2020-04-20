@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CDAO1 {
+public class CDAO {
 	private Connection conn;
 	private Statement stmt;
 	private ResultSet rs; 
-	private static CDAO1 CDAOobj;
-	private CDTO1 member = new CDTO1();
+	private static CDAO CDAOobj;
+	private CDTO member = new CDTO();
 	
-	public CDAO1() {
+	public CDAO() {
 	}	
 	static {
 		try {
@@ -26,9 +26,9 @@ public class CDAO1 {
 		}
 	}
 	
-	public static CDAO1 getInstance() {
+	public static CDAO getInstance() {
 		if (CDAOobj == null) {
-			CDAOobj = new CDAO1();
+			CDAOobj = new CDAO();
 		}
 		return CDAOobj;
 	}
@@ -77,7 +77,7 @@ public class CDAO1 {
 		
 	}
 	//선주회원등록
-	public boolean insertOne(CDTO1 ex2) {
+	public boolean insertOne(CDTO ex2) {
 		boolean cFlag = false;
 		if(this.connect()) {
 			String sql = "INSERT INTO MEMBERC VALUES (?,?,?,?,?,?,?)";
@@ -107,7 +107,7 @@ public class CDAO1 {
 		return cFlag;
 	}
 	//선주회원등록 삭제
-	public boolean delOne(CDTO1 m) {
+	public boolean delOne(CDTO m) {
 		 boolean cFlag = false;
 		if(this.connect()) {
 			String sql = "DELETE FROM MEMBERC WHERE ID = ? ";

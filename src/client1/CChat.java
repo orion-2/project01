@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-public class CChat {
+public class CChat extends Thread{
 	private Socket withServer = null;
 	private InputStream reC = null;
 	private OutputStream senC = null;
@@ -22,11 +22,10 @@ public class CChat {
 	CChat(Socket c){
 		this.withServer = c;
 		home();
-		startJoin();
 		
 	}
 	private void home() {
-		home = new JFrameHome(this);	
+		home = new JFrameHome(this);
 	}
 	private void startJoin() {
 		join = new JFrameC1(this);

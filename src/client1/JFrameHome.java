@@ -14,14 +14,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import client2.GChat;
+
 @SuppressWarnings("serial")
 public class JFrameHome extends JFrame {
-	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	CChat myHome = null;
 	
-	JFrameHome(CChat c){
+	private JPanel contentPane;
+	JTextField[] indata = new JTextField[2];
+	CChat myHome = null;
+	CDTO ex = new CDTO();
+//	GChat myhome1 = null;
+	
+	public JFrameHome(CChat c){
+//		myhome1 = g;
 		myHome = c;
 		init();
 	}
@@ -33,12 +38,9 @@ public class JFrameHome extends JFrame {
 		setContentPane(contentPane);
 		setSize(410,670);
 		
-		
-		
 		JLabel lblImage = new JLabel();
 		lblImage.setBounds(5, 143, 371, 255);
 		setTitle("임시제목 1.0v");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.setLayout(null);
 		contentPane.add(lblImage, BorderLayout.CENTER);
 			
@@ -62,10 +64,10 @@ public class JFrameHome extends JFrame {
 		lblNewLabel_1.setBounds(94, 8, 68, 15);
 		panel_4.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(161, 5, 116, 21);
-		panel_4.add(textField);
-		textField.setColumns(10);
+		indata[0] = new JTextField();
+		indata[0].setBounds(161, 5, 116, 21);
+		panel_4.add(indata[0]);
+		indata[0].setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBounds(5, 487, 377, 37);
@@ -76,10 +78,10 @@ public class JFrameHome extends JFrame {
 		lblNewLabel_2.setBounds(95, 8, 65, 15);
 		panel_5.add(lblNewLabel_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(161, 5, 116, 21);
-		panel_5.add(textField_1);
-		textField_1.setColumns(10);
+		indata[1] = new JTextField();
+		indata[1].setBounds(161, 5, 116, 21);
+		panel_5.add(indata[1]);
+		indata[1].setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBounds(6, 534, 377, 33);

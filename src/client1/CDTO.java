@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
-public class CDTO1 implements Serializable {
+public class CDTO implements Serializable {
 	private String Id;
 	private String Pw;
 	private String Name;
@@ -14,6 +14,8 @@ public class CDTO1 implements Serializable {
 	private String ShipAddr;
 	
 	public ArrayList<String> data = new ArrayList<>();
+	
+	
 		
 	
 	public String getId() {

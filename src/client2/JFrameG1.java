@@ -17,15 +17,11 @@ import client1.CChat;
 @SuppressWarnings("serial")
 public class JFrameG1 extends JFrame{
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	JTextField[] indata = new JTextField[4];
 	GChat myLog = null;
 	GDTO ex = new GDTO();
 	
-	JFrameG1(GChat g) {
+	public JFrameG1(GChat g) {
 		myLog = g;
 		init();
 	}
@@ -60,9 +56,9 @@ public class JFrameG1 extends JFrame{
 		panel_1.add(lblNewLabel_1);
 
 		indata[0] = new JTextField();
-		textField.setBounds(99, 46, 116, 21);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		indata[0].setBounds(99, 46, 116, 21);
+		panel_1.add(indata[0]);
+		indata[0].setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("비밀번호");
 		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 12));
@@ -70,29 +66,30 @@ public class JFrameG1 extends JFrame{
 		panel_1.add(lblNewLabel_2);
 
 		indata[1] = new JTextField();
-		textField_1.setBounds(99, 113, 116, 21);
-		panel_1.add(textField_1);
-		textField_1.setColumns(10);
+		indata[1].setBounds(99, 113, 116, 21);
+		panel_1.add(indata[1]);
+		indata[1].setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("이       름");
 		lblNewLabel_3.setFont(new Font("굴림", Font.PLAIN, 12));
 		lblNewLabel_3.setBounds(30, 178, 57, 15);
 		panel_1.add(lblNewLabel_3);
 
+		indata[2] = new JTextField();
+		indata[2].setBounds(100, 175, 116, 21);
+		panel_1.add(indata[2]);
+		indata[2].setColumns(10);
+
 		JLabel lblNewLabel_4 = new JLabel("휴대폰번호");
 		lblNewLabel_4.setFont(new Font("굴림", Font.PLAIN, 12));
 		lblNewLabel_4.setBounds(30, 232, 70, 15);
 		panel_1.add(lblNewLabel_4);
 
-		indata[3] = new JTextField();
-		textField_2.setBounds(100, 175, 116, 21);
-		panel_1.add(textField_2);
-		textField_2.setColumns(10);
 
-		indata[4] = new JTextField();
-		textField_3.setBounds(100, 229, 116, 21);
-		panel_1.add(textField_3);
-		textField_3.setColumns(10);
+		indata[3] = new JTextField();
+		indata[3].setBounds(100, 229, 116, 21);
+		panel_1.add(indata[3]);
+		indata[3].setColumns(10);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(66, 460, 238, 68);
@@ -100,6 +97,10 @@ public class JFrameG1 extends JFrame{
 		panel_2.setLayout(null);
 
 		JButton btnNewButton = new JButton("가입하기");
+		btnNewButton.setBounds(31, 10, 92, 28);
+		panel_2.add(btnNewButton);
+		setVisible(true);
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object cobj = e.getSource();
@@ -118,9 +119,14 @@ public class JFrameG1 extends JFrame{
 				}
 			}
 		});
-		btnNewButton.setBounds(64, 10, 112, 35);
-		panel_2.add(btnNewButton);
-		setVisible(true);
+		JButton cancelBtn = new JButton("취소");
+		cancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		cancelBtn.setBounds(146, 10, 92, 28);
+		panel_2.add(cancelBtn);
 
 	}
 }

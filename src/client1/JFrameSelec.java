@@ -20,11 +20,13 @@ import client2.JFrameG1;
 public class JFrameSelec extends JFrame {
 	
 	private JPanel contentPane;
-	private GChat myLog = null;
-	JFrameG1 a = new JFrameG1();
+	private JFrameC1 a = null;
+	private CChat myC = null;
+	private JFrameG1 b = null;
+	private GChat myG = null;
 		
 	public JFrameSelec() {
-
+		
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 450, 600);
 		contentPane = new JPanel();
@@ -66,7 +68,8 @@ public class JFrameSelec extends JFrame {
 		JButton btnNewButton = new JButton("일반 회원");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new JFrameG1();
+				b = new JFrameG1(myG);
+				dispose();
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 255, 255));
@@ -78,7 +81,8 @@ public class JFrameSelec extends JFrame {
 		JButton btnNewButton_1 = new JButton("선주 회원");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new JFrameC1(null);
+				a = new JFrameC1(myC);
+				dispose();
 			}
 		});
 		btnNewButton_1.setBackground(new Color(30, 144, 255));

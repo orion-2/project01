@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import client1.CDAO1;
-import client1.CDTO1;
+import client1.CDAO;
+import client1.CDTO;
 
 public class Server extends Thread {
 	private Socket withClient = null;
@@ -22,8 +22,8 @@ public class Server extends Thread {
 	private OutputStream senC = null;
 	private SCenter sc = null;
 	private ArrayList<Thread> tList = new ArrayList<>();
-	private CDAO1 myDao = new CDAO1();
-	private CDTO1 ex2 = new CDTO1();
+	private CDAO myDao = new CDAO();
+	private CDTO ex2 = new CDTO();
 	
 
 	Server(Socket c, SCenter s) {

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -17,17 +16,15 @@ public class GChat {
 	private Socket withServer = null;
 	private InputStream reC = null;
 	private OutputStream senC = null;
-	private JFrameHome home = null;
 	private JFrameG1 join = null;
+	
 	ArrayList <JTextField[]> in = new ArrayList<>();
 	
 	GChat(Socket c){
 		this.withServer = c;
-//		home();
 		startJoin();
 		
 	}
-	
 	
 	private void startJoin() {
 		join = new JFrameG1(this);
