@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 
 import client1.CDAO;
 import client1.CDTO;
+import client2.GDAO;
+import client2.GDTO;
 
 public class Server extends Thread {
 	private Socket withClient = null;
@@ -23,21 +25,19 @@ public class Server extends Thread {
 	private SCenter sc = null;
 	private ArrayList<Thread> tList = new ArrayList<>();
 	private CDAO myDao = new CDAO();
-	private CDTO ex2 = new CDTO();
-	
+	private GDAO myGDao = new GDAO();
 
 	Server(Socket c, SCenter s) {
 		this.withClient = c;
 		this.sc = s;
 	}
-
+	
 	@Override
 	public void run() {
 		try {
 //			receive();
 			streamSet();
-			myDao.insertOne(ex2);
-			
+		
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -45,11 +45,11 @@ public class Server extends Thread {
 		}
 	}
 
-//	private void receive() {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	private void receive() {
+		// TODO Auto-generated method stub
+	}
 
+	@SuppressWarnings({ "unused", "unchecked" })
 	private void streamSet() throws IOException, Exception {
 		byte[] reBuffer = new byte[1024];
 		reC = withClient.getInputStream();
@@ -57,20 +57,48 @@ public class Server extends Thread {
 		ByteArrayInputStream bais = new ByteArrayInputStream(reBuffer);
 		ObjectInputStream ois = new ObjectInputStream(bais);
 		Object indata = ois.readObject();
-		ArrayList<String> ex = (ArrayList <String>) indata;
-			ex2.setId(ex.get(0));
-			ex2.setPw(ex.get(1));
-			ex2.setName(ex.get(2));
-			ex2.setPNum(ex.get(3));
-			ex2.setShipNum(ex.get(4));
-			ex2.setShipName(ex.get(5));
-			ex2.setShipAddr(ex.get(6));
-		System.out.println("성공하였습니다.");
 		
-//        ois.close();
-//        reC.close();
-//        withClient.close();
-
+		ArrayList<String> ex = (ArrayList <String>) indata;
+			if(ex.size() == 7) {
+				
+				CDTO ex2 = new CDTO();
+				ex2.setId(ex.get(0));
+				ex2.setPw(ex.get(1));
+				ex2.setName(ex.get(2));
+				ex2.setPNum(ex.get(3));
+				ex2.setShipNum(ex.get(4));
+				ex2.setShipName(ex.get(5));
+				ex2.setShipAddr(ex.get(6));
+				
+				myDao.insertOne(ex2);
+				System.out.println("성공하였대.");
+			}
+			else if(ex.size() == 4) {
+				
+				GDTO ex3 = new GDTO();
+				ex3.setId(ex.get(0));
+				ex3.setPw(ex.get(1));
+				ex3.setName(ex.get(2));
+				ex3.setPNum(ex.get(3));
+				System.out.println("성공하였습니다.");
+				
+				myGDao.insertOne(ex3);
+				
+			}
+			
 	}
+	
+	private void memberG() {
+		
+	}
+	private void memberC() {
+		
+	}
+	private void close() {
+//      ois.close();
+//      reC.close();
+//      withClient.close();
+	}
+
 
 }

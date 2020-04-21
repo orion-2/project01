@@ -18,7 +18,9 @@ import javax.swing.border.EmptyBorder;
 public class JFrameC1 extends JFrame {
 	
 	private JPanel contentPane;
+	private JButton addBtn = new JButton("가입하기");
 	JTextField[] indata = new JTextField[7];
+
 	CChat myLog = null;
 	CDTO ex = new CDTO();
 	
@@ -128,7 +130,6 @@ public class JFrameC1 extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 
-		JButton addBtn = new JButton("가입하기");
 		addBtn.setBounds(31, 10, 92, 28);
 		panel_2.add(addBtn);
 		setVisible(true);
@@ -141,8 +142,9 @@ public class JFrameC1 extends JFrame {
 					try {
 						for (int i = 0; i < indata.length; i++) {
 							ex.data.add(indata[i].getText());
-							System.out.println(ex.data.get(i));
+//							System.out.println(ex.data.get(i));
 						}
+						ex.data.add(7, "addB");
 						myLog.streamSet(ex.data);
 						dispose();
 					} catch (IOException e1) {

@@ -37,7 +37,7 @@ public class GDAO {
 		boolean cFlag=false;
 		try {
 			conn = DriverManager.getConnection
-				(""+"jdbc:oracle:thin:@localhost:1521:orcl","system","11111111");
+				(""+"jdbc:oracle:thin:@localhost:1521:orcl","system","1");
 			cFlag = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -74,16 +74,16 @@ public class GDAO {
 		
 	}
 	//선주회원등록
-	public boolean insertOne(GDTO ex2) {
+	public boolean insertOne(GDTO ex3) {
 		boolean cFlag = false;
 		if(this.connect()) {
-			String sql = "INSERT INTO MEMBERG VALUES (?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO MEMBERG VALUES (?,?,?,?)";
 			try {
 				PreparedStatement psmt = conn.prepareStatement(sql);
-				psmt.setString(1, ex2.getId());
-				psmt.setString(2, ex2.getPw());
-				psmt.setString(3, ex2.getName());
-				psmt.setString(4, ex2.getPNum());
+				psmt.setString(1, ex3.getId());
+				psmt.setString(2, ex3.getPw());
+				psmt.setString(3, ex3.getName());
+				psmt.setString(4, ex3.getPNum());
 				int r = psmt.executeUpdate();
 				
 				if(r > 0) {

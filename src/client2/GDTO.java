@@ -39,7 +39,7 @@ public class GDTO implements Serializable {
 	}
 	
 	public String[] getArray() {
-		String[] returnData = new String[7];
+		String[] returnData = new String[4];
 		returnData[0]=this.Id;
 		returnData[1]=this.Pw;
 		returnData[2]=this.Name;

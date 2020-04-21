@@ -7,7 +7,6 @@ public class SCenter {
 	
 	public void addSChat(Server s) {
 		this.sList.add(s);
-		
 	}
 	
 }

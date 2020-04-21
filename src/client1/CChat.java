@@ -22,10 +22,11 @@ public class CChat extends Thread{
 	CChat(Socket c){
 		this.withServer = c;
 		home();
+//		startJoin();
 		
 	}
 	private void home() {
-		home = new JFrameHome(this);
+		home = new JFrameHome(this, null);
 	}
 	private void startJoin() {
 		join = new JFrameC1(this);

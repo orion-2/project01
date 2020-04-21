@@ -16,14 +16,18 @@ public class GChat {
 	private Socket withServer = null;
 	private InputStream reC = null;
 	private OutputStream senC = null;
+	private JFrameHome home = null;
 	private JFrameG1 join = null;
 	
 	ArrayList <JTextField[]> in = new ArrayList<>();
 	
-	GChat(Socket c){
-		this.withServer = c;
-		startJoin();
-		
+	GChat(Socket g){
+		this.withServer = g;
+		home();
+	}
+	
+	private void home() {
+		home = new JFrameHome(null, this);
 	}
 	
 	private void startJoin() {
@@ -50,7 +54,6 @@ public class GChat {
 			}
 		}).start();
 	}
-	
 	
 	public void streamSet(ArrayList<String> data) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

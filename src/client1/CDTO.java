@@ -15,9 +15,6 @@ public class CDTO implements Serializable {
 	
 	public ArrayList<String> data = new ArrayList<>();
 	
-	
-		
-	
 	public String getId() {
 		return Id;
 	}

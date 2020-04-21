@@ -18,6 +18,7 @@ import client1.CChat;
 public class JFrameG1 extends JFrame{
 	private JPanel contentPane;
 	JTextField[] indata = new JTextField[4];
+	
 	GChat myLog = null;
 	GDTO ex = new GDTO();
 	
@@ -110,6 +111,7 @@ public class JFrameG1 extends JFrame{
 							ex.data.add(indata[i].getText());
 							System.out.println(ex.data.get(i));
 						}
+						ex.data.add(4, "addA");
 						myLog.streamSet(ex.data);
 						dispose();
 					} catch (IOException e1) {

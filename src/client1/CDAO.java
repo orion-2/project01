@@ -37,7 +37,7 @@ public class CDAO {
 		boolean cFlag=false;
 		try {
 			conn = DriverManager.getConnection
-				(""+"jdbc:oracle:thin:@localhost:1521:orcl","system","11111111");
+				(""+"jdbc:oracle:thin:@localhost:1521:orcl","system","1");
 			cFlag = true;
 		} catch (SQLException e) {
 			e.printStackTrace();

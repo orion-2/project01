@@ -22,12 +22,12 @@ public class JFrameHome extends JFrame {
 	private JPanel contentPane;
 	JTextField[] indata = new JTextField[2];
 	CChat myHome = null;
+	GChat myHome1 = null;
 	CDTO ex = new CDTO();
-//	GChat myhome1 = null;
 	
-	public JFrameHome(CChat c){
-//		myhome1 = g;
+	public JFrameHome(CChat c, GChat g){
 		myHome = c;
+		myHome1 = g;
 		init();
 	}
 	public void init() {
@@ -92,7 +92,7 @@ public class JFrameHome extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new JFrameSelec();
+				new JFrameSelec(myHome,myHome1);
 			}	
 		});
 		

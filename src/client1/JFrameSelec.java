@@ -24,8 +24,14 @@ public class JFrameSelec extends JFrame {
 	private CChat myC = null;
 	private JFrameG1 b = null;
 	private GChat myG = null;
-		
-	public JFrameSelec() {
+	
+	JFrameSelec(CChat c, GChat g){
+		myC = c;
+		myG = g;
+		init();
+	}
+	
+	public void init() {
 		
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 450, 600);
