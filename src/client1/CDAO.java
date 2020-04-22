@@ -13,7 +13,6 @@ public class CDAO {
 	private Statement stmt;
 	private ResultSet rs; 
 	private static CDAO CDAOobj;
-	private CDTO member = new CDTO();
 	
 	public CDAO() {
 	}	
@@ -45,8 +44,8 @@ public class CDAO {
 		return cFlag;
 	}
 	//선주 회원목록보기
-	public ArrayList<String[]> selectAll() {
-		ArrayList<String[]> cList = new ArrayList<>();
+	public ArrayList<CDTO> selAll() {
+		ArrayList<CDTO> cList = new ArrayList<>();
 		String sql = "SELECT * FROM MEMBERC";
 		if(connect()) {
 			try {
@@ -54,15 +53,16 @@ public class CDAO {
 				if(stmt != null) {
 					rs = stmt.executeQuery(sql);
 					while(rs.next()) {
-						member.setId(rs.getString("ID"));
-						member.setPw(rs.getString("PASSWORD"));
-						member.setName(rs.getString("NAME"));
-						member.setPNum(rs.getString("PNUM"));
-						member.setShipNum(rs.getString("SHIPNUM"));
-						member.setShipName(rs.getString("SHIPNAME"));
-						member.setShipAddr(rs.getString("SHIPADDR"));
+						CDTO ex2 = new CDTO();
+						ex2.setId(rs.getString("ID"));
+						ex2.setPw(rs.getString("PW"));
+						ex2.setName(rs.getString("NAME"));
+						ex2.setPNum(rs.getString("PNUM"));
+						ex2.setShipNum(rs.getString("SHIPNUM"));
+						ex2.setShipName(rs.getString("SHIPNAME"));
+						ex2.setShipAddr(rs.getString("SHIPADDR"));
 						
-						cList.add(member.getArray());
+						cList.add(ex2);
 						
 					}
 				}

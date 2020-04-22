@@ -22,7 +22,7 @@ public class SMain {
 			withClient = serverS.accept();
 			cList.add(withClient);
 			System.out.println(cList);
-			System.out.println(withClient.getInetAddress() + "클라이언트 접속함");
+			System.out.println(withClient.getInetAddress() + " 클라이언트 접속함");
 			Server s = new Server(withClient,sc);
 			sc.addSChat(s);
 			s.start();

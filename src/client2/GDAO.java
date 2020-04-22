@@ -13,7 +13,6 @@ public class GDAO {
 	private Statement stmt;
 	private ResultSet rs; 
 	private static GDAO CDAOobj;
-	private GDTO member = new GDTO();
 	
 	public GDAO() {
 	}	
@@ -45,8 +44,8 @@ public class GDAO {
 		return cFlag;
 	}
 	//선주 회원목록보기
-	public ArrayList<String[]> selectAll() {
-		ArrayList<String[]> cList = new ArrayList<>();
+	public ArrayList<GDTO> selAll() {
+		ArrayList<GDTO> gList = new ArrayList<>();
 		String sql = "SELECT * FROM MEMBERG";
 		if(connect()) {
 			try {
@@ -54,12 +53,12 @@ public class GDAO {
 				if(stmt != null) {
 					rs = stmt.executeQuery(sql);
 					while(rs.next()) {
-						member.setId(rs.getString("ID"));
-						member.setPw(rs.getString("PASSWORD"));
-						member.setName(rs.getString("NAME"));
-						member.setPNum(rs.getString("PNUM"));
-						
-						cList.add(member.getArray());
+						GDTO ex2 = new GDTO();
+						ex2.setId(rs.getString("ID"));
+						ex2.setPw(rs.getString("PW"));
+						ex2.setName(rs.getString("NAME"));
+						ex2.setPNum(rs.getString("PNUM"));
+						gList.add(ex2);
 						
 					}
 				}
@@ -70,7 +69,7 @@ public class GDAO {
 		}else {
 			System.out.println("DB접속 오류");
 		}
-		return cList;
+		return gList;
 		
 	}
 	//선주회원등록

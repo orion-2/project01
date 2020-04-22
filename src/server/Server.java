@@ -59,27 +59,25 @@ public class Server extends Thread {
 		Object indata = ois.readObject();
 		
 		ArrayList<String> ex = (ArrayList <String>) indata;
-			if(ex.size() == 7) {
-				
+			if(ex.get(0).equals("addB")) {
 				CDTO ex2 = new CDTO();
-				ex2.setId(ex.get(0));
-				ex2.setPw(ex.get(1));
-				ex2.setName(ex.get(2));
-				ex2.setPNum(ex.get(3));
-				ex2.setShipNum(ex.get(4));
-				ex2.setShipName(ex.get(5));
-				ex2.setShipAddr(ex.get(6));
+				ex2.setId(ex.get(1));
+				ex2.setPw(ex.get(2));
+				ex2.setName(ex.get(3));
+				ex2.setPNum(ex.get(4));
+				ex2.setShipNum(ex.get(5));
+				ex2.setShipName(ex.get(6));
+				ex2.setShipAddr(ex.get(7));
 				
 				myDao.insertOne(ex2);
 				System.out.println("성공하였대.");
 			}
-			else if(ex.size() == 4) {
-				
+			else if(ex.get(0).equals("addA")) {
 				GDTO ex3 = new GDTO();
-				ex3.setId(ex.get(0));
-				ex3.setPw(ex.get(1));
-				ex3.setName(ex.get(2));
-				ex3.setPNum(ex.get(3));
+				ex3.setId(ex.get(1));
+				ex3.setPw(ex.get(2));
+				ex3.setName(ex.get(3));
+				ex3.setPNum(ex.get(4));
 				System.out.println("성공하였습니다.");
 				
 				myGDao.insertOne(ex3);
