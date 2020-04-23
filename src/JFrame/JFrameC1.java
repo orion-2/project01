@@ -1,4 +1,4 @@
-package client1;
+package JFrame;
 
 import java.awt.Event;
 import java.awt.Font;
@@ -18,26 +18,28 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import client1.CChat;
+import client1.CDAO;
+import client1.CDTO;
 import client2.GDTO;
 
 @SuppressWarnings("serial")
 public class JFrameC1 extends JFrame {
 
 	private JPanel contentPane;
-	private JButton addBtn = new JButton("가입하기");
 	JTextField[] indata = new JTextField[8];
 	CChat myLog = null;
-	CDAO myDao = CDAO.getInstance();
 	CDTO ex = new CDTO();
+	CDAO myDao = CDAO.getInstance();
 	GDTO ex1 = new GDTO();
 	private ArrayList<CDTO> cList = new ArrayList<>();
 	private ArrayList<GDTO> gList = new ArrayList<>();
 
-	JFrameC1(CChat c) {
+	public JFrameC1(CChat c) {
 		myLog = c;
 		init();
 	}
-
+	
 	@SuppressWarnings("unlikely-arg-type")
 	public void init() {
 
@@ -99,7 +101,7 @@ public class JFrameC1 extends JFrame {
 		lblNewLabel_4.setFont(new Font("굴림", Font.PLAIN, 12));
 		lblNewLabel_4.setBounds(23, 135, 70, 18);
 		panel_1.add(lblNewLabel_4);
-
+		
 		indata[4] = new JTextField();
 		indata[4].setBounds(106, 134, 106, 21);
 		panel_1.add(indata[4]);
@@ -140,15 +142,16 @@ public class JFrameC1 extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 
+		JButton addBtn = new JButton("가입하기");
 		addBtn.setBounds(31, 10, 92, 28);
 		panel_2.add(addBtn);
-
+		
 		JButton btnNewButton_2 = new JButton("중복확인");
 		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton_2.setFont(new Font("굴림", Font.PLAIN, 10));
 		btnNewButton_2.setBounds(193, 13, 76, 23);
 		panel_1.add(btnNewButton_2);
-
+		
 		JLabel idchk = new JLabel();
 		idchk.setText(" ");
 		idchk.setFont(new Font("굴림", Font.PLAIN, 11));
@@ -163,10 +166,10 @@ public class JFrameC1 extends JFrame {
 				cList = myDao.selAll();
 				if (indata[1].getText().length() <= 8) {
 					for (int i = 0; i < cList.size(); i++) {
-						if(cList.get(i).getId().equals(indata[1].getText())) {
-							idchk.setText("아이디가 중복되었습니다.");
-						}else {
+						if(!cList.get(i).getId().equals(indata[1].getText())) {
 							idchk.setText("사용가능한 아이디입니다.");
+						}else {
+							idchk.setText("중복된 아이디입니다.");
 						}
 					}
 				} else { // 8글자 이하가 아닌 경우

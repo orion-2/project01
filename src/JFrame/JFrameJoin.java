@@ -1,4 +1,4 @@
-package client1;
+package JFrame;
 
 public class JFrameJoin {
 	

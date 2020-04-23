@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 
 import client1.CDAO;
 import client1.CDTO;
+import client1.RCDAO;
+import client1.RCDTO;
 import client2.GDAO;
 import client2.GDTO;
 
@@ -26,6 +28,7 @@ public class Server extends Thread {
 	private ArrayList<Thread> tList = new ArrayList<>();
 	private CDAO myDao = new CDAO();
 	private GDAO myGDao = new GDAO();
+	private RCDAO myrcDao = new RCDAO();
 
 	Server(Socket c, SCenter s) {
 		this.withClient = c;
@@ -35,19 +38,17 @@ public class Server extends Thread {
 	@Override
 	public void run() {
 		try {
-//			receive();
 			streamSet();
-		
-			
+//			receive();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void receive() {
-		// TODO Auto-generated method stub
-	}
+//	private void receive() {
+//		// TODO Auto-generated method stub
+//	}
 
 	@SuppressWarnings({ "unused", "unchecked" })
 	private void streamSet() throws IOException, Exception {
@@ -71,8 +72,7 @@ public class Server extends Thread {
 				
 				myDao.insertOne(ex2);
 				System.out.println("성공하였대.");
-			}
-			else if(ex.get(0).equals("addA")) {
+			}else if(ex.get(0).equals("addA")) {
 				GDTO ex3 = new GDTO();
 				ex3.setId(ex.get(1));
 				ex3.setPw(ex.get(2));
@@ -82,21 +82,28 @@ public class Server extends Thread {
 				
 				myGDao.insertOne(ex3);
 				
+			}else if(ex.get(0).equals("addC")) {
+				RCDTO ex4 = new RCDTO();
+				ex4.setId(ex.get(1));
+				ex4.setShipNum(ex.get(2));
+				ex4.setShipName(ex.get(3));
+				ex4.setShipAddr(ex.get(4));
+				ex4.setTotalNum(ex.get(5));
+				ex4.setDate(ex.get(6));
+				
+				myrcDao.insertOne(ex4);
+				System.out.println("성공하였대.");
 			}
+			
 			
 	}
 	
-	private void memberG() {
-		
-	}
-	private void memberC() {
-		
-	}
-	private void close() {
+	
+//	private void close() {
 //      ois.close();
 //      reC.close();
 //      withClient.close();
-	}
+//	}
 
 
 }

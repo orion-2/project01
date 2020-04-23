@@ -8,8 +8,10 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import JFrame.JFrameC1;
+import JFrame.JFrameHome;
 
 public class CChat extends Thread{
 	private Socket withServer = null;

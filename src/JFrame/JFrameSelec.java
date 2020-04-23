@@ -1,4 +1,4 @@
-package client1;
+package JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import client1.CChat;
 import client2.GChat;
 import client2.JFrameG1;
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import client1.JFrameHome;
+import JFrame.JFrameHome;
 
 public class GChat {
 	private Socket withServer = null;
