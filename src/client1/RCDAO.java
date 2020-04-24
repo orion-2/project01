@@ -43,10 +43,10 @@ public class RCDAO {
 		}
 		return cFlag;
 	}
-	//선주 회원목록보기
+	//선주 출항일정확인
 	public ArrayList<RCDTO> selAll() {
 		ArrayList<RCDTO> rcList = new ArrayList<>();
-		String sql = "SELECT * FROM MEMBERC";
+		String sql = "SELECT * FROM BOOKINGC";
 		if(connect()) {
 			try {
 				stmt = conn.createStatement();
@@ -57,12 +57,12 @@ public class RCDAO {
 						rcDTO.setId(rs.getString("ID"));
 						rcDTO.setShipNum(rs.getString("SHIPNUM"));
 						rcDTO.setShipName(rs.getString("SHIPNAME"));
+						rcDTO.setDate(rs.getString("DATE"));
 						rcDTO.setShipAddr(rs.getString("SHIPADDR"));
-						rcDTO.setTotalNum(rs.getString("TOTALNUM"));
-						rcDTO.setDate(rs.getString("DATA"));
+						rcDTO.setPrice(rs.getString("PRICE"));
 						
 						rcList.add(rcDTO);
-						
+						System.out.println(rcList.get(0).getId());
 					}
 				}
 			} catch (SQLException e) {
@@ -75,7 +75,7 @@ public class RCDAO {
 		return rcList;
 		
 	}
-	//예약정보등록
+	//출항일정등록
 	public boolean insertOne(RCDTO rcDTO) {
 		boolean cFlag = false;
 		if(this.connect()) {
@@ -85,9 +85,9 @@ public class RCDAO {
 				psmt.setString(1, rcDTO.getId());
 				psmt.setString(2, rcDTO.getShipNum());
 				psmt.setString(3, rcDTO.getShipName());
-				psmt.setString(4, rcDTO.getShipAddr());
-				psmt.setString(5, rcDTO.getTotalNum());
-				psmt.setString(6, rcDTO.getDate());
+				psmt.setString(4, rcDTO.getDate());
+				psmt.setString(5, rcDTO.getShipAddr());
+				psmt.setString(6, rcDTO.getPrice());
 				int r = psmt.executeUpdate();
 				
 				if(r > 0) {
@@ -104,30 +104,59 @@ public class RCDAO {
 		}
 		return cFlag;
 	}
-//	//선주회원등록 삭제
-//	public boolean delOne(CDTO m) {
-//		 boolean cFlag = false;
-//		if(this.connect()) {
-//			String sql = "DELETE FROM MEMBERC WHERE ID = ? ";
-//			PreparedStatement psmt;
-//			try {
-//				psmt = conn.prepareStatement(sql);
-//				psmt.setString(1, m.getId());
-//				psmt.executeUpdate();
-//				int r = psmt.executeUpdate();
-//				if(r > 0) {
-//					cFlag = true;
-//				}
-//				psmt.close();
-//				
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}else {
-//			System.out.println("DB접속 오류");
-//			System.exit(0);
-//		}
-//		return cFlag;
-//	}
+	
+	
+	public boolean selOne(RCDTO rcDTO) {
+		boolean cFlag = false;
+		if(this.connect()) {
+			String sql = "SELECT * FROM BOOKINGC WHERE SHIPNAME = (?)" ;
+			try {
+				PreparedStatement psmt = conn.prepareStatement(sql);
+				psmt.setString(1, rcDTO.getShipName());
+				
+				int r = psmt.executeUpdate();
+				if(r > 0) {
+					cFlag = true;
+					System.out.println("성공하였습니다.");
+				}
+				psmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}else {
+			System.out.println("DB연결 실패");
+			System.exit(0);
+		}
+		return cFlag;
+	}
+	
+	
+	
+	
+	//예약 삭제
+	public boolean delOne(RCDTO rcDTO) {
+		 boolean cFlag = false;
+		if(this.connect()) {
+			String sql = "DELETE FROM BOOKINGC WHERE SHIPNAME = ? ";
+			PreparedStatement psmt;
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, rcDTO.getShipName());
+				psmt.executeUpdate();
+				int r = psmt.executeUpdate();
+				if(r > 0) {
+					cFlag = true;
+				}
+				psmt.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			System.out.println("DB접속 오류");
+			System.exit(0);
+		}
+		return cFlag;
+	}
 }

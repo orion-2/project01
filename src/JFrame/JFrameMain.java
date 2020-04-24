@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -24,9 +25,9 @@ public class JFrameMain extends JFrame {
 		myLog = c;
 	}
 	
-	public void JMain() {
+	public void JMain(String id) {
 		
-		setTitle("낚시가자 1.0v");
+		setTitle("Fishig Day 1.0v");
 		setBounds(500, 100, 450, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -35,13 +36,13 @@ public class JFrameMain extends JFrame {
 		setSize(410,670);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(34, 35, 323, 59);
+		panel.setBounds(34, 35, 348, 59);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(74, 10, 237, 46);
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 34));
+		JLabel lblNewLabel = new JLabel("Fishing Day");
+		lblNewLabel.setBounds(69, 10, 274, 46);
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD | Font.ITALIC, 34));
 		panel.add(lblNewLabel);
 		
 		JLabel lblImage = new JLabel();
@@ -72,7 +73,7 @@ public class JFrameMain extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				JFrameReserC r = new JFrameReserC(myLog);
-				r.reservation();
+				r.reservation(id);
 			}
 		});
 		
@@ -163,6 +164,19 @@ public class JFrameMain extends JFrame {
 		btnNewButton_11.setFont(new Font("굴림", Font.PLAIN, 9));
 		btnNewButton_11.setBounds(274, 145, 45, 39);
 		panel_2.add(btnNewButton_11);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(34, 10, 323, 36);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel(id + " 님");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.ITALIC, 12));
+		lblNewLabel_1.setBounds(0, 0, 132, 36);
+		panel_3.add(lblNewLabel_1);
+	
+		
 		setVisible(true);
 	}
 }

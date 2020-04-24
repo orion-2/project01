@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
+import JFrame.JFrameG1;
 import JFrame.JFrameHome;
 
 public class GChat {

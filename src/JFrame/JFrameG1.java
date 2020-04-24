@@ -1,4 +1,4 @@
-package client2;
+package JFrame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,6 +20,9 @@ import javax.swing.border.EmptyBorder;
 import client1.CChat;
 import client1.CDAO;
 import client1.CDTO;
+import client2.GChat;
+import client2.GDAO;
+import client2.GDTO;
 
 @SuppressWarnings("serial")
 public class JFrameG1 extends JFrame{
@@ -53,9 +56,9 @@ public class JFrameG1 extends JFrame{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New Label");
-		lblNewLabel.setBounds(74, 10, 237, 46);
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 34));
+		JLabel lblNewLabel = new JLabel("Fishing Day");
+		lblNewLabel.setBounds(69, 10, 274, 46);
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD | Font.ITALIC, 34));
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();

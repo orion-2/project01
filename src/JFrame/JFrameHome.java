@@ -21,6 +21,7 @@ import client1.CChat;
 import client1.CDAO;
 import client1.CDTO;
 import client2.GChat;
+import client2.GDAO;
 import client2.GDTO;
 
 @SuppressWarnings("serial")
@@ -32,11 +33,12 @@ public class JFrameHome extends JFrame {
 	GChat myHome1 = null;
 	CDTO ex = new CDTO();
 	CDAO myDao = CDAO.getInstance();
+	GDTO ex1 = new GDTO();
+	GDAO myDao1 = GDAO.getInstance();
 	private ArrayList<CDTO> cList = new ArrayList<>();
 	private ArrayList<GDTO> gList = new ArrayList<>();
 	logInp1 s = new logInp1();
 	logInp2 p = new logInp2();
-	String logId;
 
 	public JFrameHome(CChat c, GChat g) {
 		myHome = c;
@@ -116,20 +118,32 @@ public class JFrameHome extends JFrame {
 		logIn.setForeground(new Color(255, 255, 255));
 		logIn.setBackground(new Color(30, 144, 255));
 		panel_6.add(logIn);
-		logId = indata[0].getText();
 		logIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JFrameMain m = new JFrameMain(myHome);
+				logInp1 l = new logInp1();
 				cList = myDao.selAll();
 				for (int i = 0; i < cList.size(); i++) {
 					if (cList.get(i).getId().equals(indata[0].getText())
 							&& cList.get(i).getPw().equals(indata[1].getText())) {
-						m.JMain();
-						dispose();
-					} else {
-
+						m.JMain(cList.get(i).getId());
+						l.login(cList.get(i).getId());
+						dispose(); 
+						
+					}else {
+						gList = myDao1.selAll();
+						for (int j = 0; j < gList.size(); j++) {
+							
+						if (gList.get(j).getId().equals(indata[0].getText())
+								&& gList.get(j).getPw().equals(indata[1].getText())) {
+							m.JMain(gList.get(j).getId());
+							l.login(gList.get(j).getId());
+							dispose(); 
+						}
+						}
 					}
+					
 				}
 			}
 		});
@@ -138,8 +152,9 @@ public class JFrameHome extends JFrame {
 		panel.setBounds(34, 35, 323, 59);
 		contentPane.add(panel);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 34));
+		JLabel lblNewLabel = new JLabel("Fishing Day");
+		lblNewLabel.setBounds(69, 10, 274, 46);
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD | Font.ITALIC, 34));
 		panel.add(lblNewLabel);
 
 		setVisible(true);

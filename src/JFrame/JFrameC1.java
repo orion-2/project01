@@ -43,7 +43,7 @@ public class JFrameC1 extends JFrame {
 	@SuppressWarnings("unlikely-arg-type")
 	public void init() {
 
-		setTitle("낚시가자 1.0v");
+		setTitle("Fishing Day 1.0v");
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 450, 600);
 		contentPane = new JPanel();
@@ -57,9 +57,9 @@ public class JFrameC1 extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(74, 10, 237, 46);
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 34));
+		JLabel lblNewLabel = new JLabel("Fishing Day");
+		lblNewLabel.setBounds(69, 10, 274, 46);
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD | Font.ITALIC, 34));
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new JPanel();

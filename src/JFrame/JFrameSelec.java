@@ -15,7 +15,6 @@ import javax.swing.border.EmptyBorder;
 
 import client1.CChat;
 import client2.GChat;
-import client2.JFrameG1;
 
 @SuppressWarnings("serial")
 public class JFrameSelec extends JFrame {
@@ -55,8 +54,9 @@ public class JFrameSelec extends JFrame {
 		panel.setBounds(34, 35, 323, 59);
 		contentPane.add(panel);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 34));
+		JLabel lblNewLabel = new JLabel("Fishing Day");
+		lblNewLabel.setBounds(69, 10, 274, 46);
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD | Font.ITALIC, 34));
 		panel.add(lblNewLabel);
 
 		JPanel panel_2 = new JPanel();

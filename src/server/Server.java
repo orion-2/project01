@@ -71,14 +71,14 @@ public class Server extends Thread {
 				ex2.setShipAddr(ex.get(7));
 				
 				myDao.insertOne(ex2);
-				System.out.println("성공하였대.");
+//				System.out.println("성공하였대.");
 			}else if(ex.get(0).equals("addA")) {
 				GDTO ex3 = new GDTO();
 				ex3.setId(ex.get(1));
 				ex3.setPw(ex.get(2));
 				ex3.setName(ex.get(3));
 				ex3.setPNum(ex.get(4));
-				System.out.println("성공하였습니다.");
+//				System.out.println("성공하였습니다.");
 				
 				myGDao.insertOne(ex3);
 				
@@ -87,12 +87,12 @@ public class Server extends Thread {
 				ex4.setId(ex.get(1));
 				ex4.setShipNum(ex.get(2));
 				ex4.setShipName(ex.get(3));
-				ex4.setShipAddr(ex.get(4));
-				ex4.setTotalNum(ex.get(5));
-				ex4.setDate(ex.get(6));
+				ex4.setDate(ex.get(4));
+				ex4.setShipAddr(ex.get(5));
+				ex4.setPrice(ex.get(6));
 				
 				myrcDao.insertOne(ex4);
-				System.out.println("성공하였대.");
+//				System.out.println("성공하였습니다.");
 			}
 			
 			
